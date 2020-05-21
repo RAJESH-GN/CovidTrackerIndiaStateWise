@@ -1,0 +1,19 @@
+.sidebar-container {
+  position: absolute;
+}
+.sidebar-container ul {
+  padding: 0px;
+  border: 1px solid black;
+  border-radius: 6%;
+}
+
+.sidebar-container li {
+  border-bottom: 1px solid black;
+}
+
+.item {
+  list-style: none;
+  width: 150px;
+  height: 36px;
+  text-align: center;
+}

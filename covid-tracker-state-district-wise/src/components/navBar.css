@@ -1,0 +1,23 @@
+.navbar-heading {
+  text-align: center;
+  color: white;
+  display: inline-block;
+}
+.navbar-container {
+  background-color: black;
+}
+
+.navbar-align-center {
+  text-align: center;
+}
+
+.image-container {
+  position: absolute;
+}
+
+.corona-img {
+  width: 40px;
+  position: absolute;
+  top: 6px;
+  left: 6px;
+}
