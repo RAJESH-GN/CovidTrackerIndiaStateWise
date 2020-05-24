@@ -1,0 +1,8 @@
+.header-table {
+  vertical-align: bottom;
+  color: white;
+  background-color: black;
+  border-right: 1px solid white;
+  text-align: center;
+  box-shadow: 2px 2px 3px #b3a7a7;
+}

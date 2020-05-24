@@ -1,5 +1,10 @@
 .container {
-  margin-top: 20px !important;
+  margin: 20px auto;
+}
+
+.route-container {
+  position: relative;
+  left: 18%;
 }
 
 .App {

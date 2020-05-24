@@ -1,18 +1,52 @@
 import React, { Component } from "react";
+import { Route, Switch, Redirect } from "react-router-dom";
 import NavBar from "./components/navBar";
 import SideBar from "./components/sideBar";
+import DistrictDetails from "./components/districtDetails";
 import CovidDetails from "./components/covidDetails";
 import "./App.css";
+import CovidDistrictDetails from "./components/covidDistrictDetails";
+import NotFound from "./components/notFound";
+
 class App extends Component {
-  state = {};
+  state = {
+    selectedTab: { id: 1, name: "State" },
+  };
+
+  handleSelectedTab = (selectedTab) => {
+    this.setState({ selectedTab });
+  };
+
   render() {
+    const { selectedTab } = this.state;
+    const tabs = [
+      { id: "1", name: "State", routeDetails: "/covid/india/state" },
+      { id: "2", name: "District", routeDetails: "/covid/india/district" },
+    ];
     return (
       <React.Fragment>
         <NavBar />
-        <div className="container">
-          <SideBar />
-          <CovidDetails />
-        </div>
+        <main className="container">
+          <SideBar
+            tabs={tabs}
+            tabHeading="Search By"
+            selectedTab={selectedTab}
+            onSelectedTab={this.handleSelectedTab}
+          />
+          <div className="route-container">
+            <Switch>
+              <Route path="/covid/india/state" component={CovidDetails} />
+              <Route path="/covid/india/district" component={DistrictDetails} />
+              <Route path="/covid/india/notfound" component={NotFound} />
+              <Route
+                path="/covid/state/:name/details"
+                render={(props) => <CovidDistrictDetails {...props} />}
+              />
+              <Redirect to="/covid/india/state" exact from="/" />
+              <Redirect to="/covid/india/notfound" />
+            </Switch>
+          </div>
+        </main>
       </React.Fragment>
     );
   }

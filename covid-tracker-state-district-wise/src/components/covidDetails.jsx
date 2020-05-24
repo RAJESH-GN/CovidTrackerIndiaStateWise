@@ -3,10 +3,15 @@ import http from "./../services/http";
 import config from "./../config/appConfig.json";
 import "./covidDetails.css";
 import DashBoardCard from "./dashBoardCard";
+import TableHead from "./tableHead";
+import Search from "./search";
+import util from "./../utils/filter";
+
 class CovidDetails extends Component {
   state = {
     statewiseDetails: [],
     total: {},
+    searchUserInput: "",
     property: [
       { id: 1, name: "confirmed", color: "red" },
       { id: 2, name: "active", color: "blue" },
@@ -22,30 +27,53 @@ class CovidDetails extends Component {
     this.setState({ statewiseDetails, total });
   }
 
+  handleSelectedState = (data) => {
+    this.props.history.push({
+      pathname: `/covid/state/${data.state}/details`,
+      state: { ...data },
+    });
+  };
+
+  handleSearchInput = (e) => {
+    this.setState({ searchUserInput: e.target.value });
+  };
+
   render() {
-    const { statewiseDetails, total, property } = this.state;
+    const { statewiseDetails, total, property, searchUserInput } = this.state;
+    const tableProperties = [
+      { id: 1, name: "State", path: "state" },
+      { id: 2, name: "Confirmed/Total", path: "confirmed" },
+      { id: 3, name: "Active", path: "active" },
+      { id: 4, name: "Recovered", path: "recovered" },
+      { id: 5, name: "Deceased", path: "deceased" },
+    ];
     let covidDetails = [
       ...statewiseDetails.filter((data) => data.state != "Total"),
     ];
+    let filteredResult = util.filterBasedOnUserInput(
+      covidDetails,
+      searchUserInput
+    );
 
     return (
       <div className="covid-details-container">
+        <Search
+          handleChange={this.handleSearchInput}
+          searchInputValue={searchUserInput}
+        />
         <DashBoardCard total={total} properties={property} />
         <div className="table-container">
           <table className="table ">
-            <thead>
-              <tr>
-                <th>State</th>
-                <th>Confirmed/Total</th>
-                <th>Active</th>
-                <th>Recovered</th>
-                <th>Deceased</th>
-              </tr>
-            </thead>
+            <TableHead properties={tableProperties} />
             <tbody>
-              {covidDetails.map((data) => (
+              {filteredResult.map((data) => (
                 <tr key={data.statecode}>
-                  <td>{data.state}</td>
+                  <td
+                    onClick={() => this.handleSelectedState(data)}
+                    style={{ display: "block" }}
+                  >
+                    {data.state}
+                  </td>
                   <td>{data.confirmed}</td>
                   <td>{data.active}</td>
                   <td>{data.recovered}</td>

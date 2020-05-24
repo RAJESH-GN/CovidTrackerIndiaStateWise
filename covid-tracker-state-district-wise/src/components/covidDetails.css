@@ -1,21 +1,14 @@
 .table-container {
   position: absolute;
-  top: 120px;
-  border: 1px solid black;
+  top: 185px;
+  min-width: 100%;
 }
 
 tr,
-td,
-th {
+td {
   box-shadow: 2px 2px 3px #b3a7a7;
 }
 
 .covid-details-container {
   position: absolute;
-  left: 300px;
-}
-
-ul li:first-child {
-  background-color: black;
-  color: white;
 }

@@ -6,7 +6,7 @@ class DashBoardCard extends Component {
     return (
       <div>
         {this.props.properties.map((property) => (
-          <div className="dashboard-card-container">
+          <div className="dashboard-card-container" key={property.id}>
             <p
               className="dashboard-text"
               style={{ color: `${property.color}` }}

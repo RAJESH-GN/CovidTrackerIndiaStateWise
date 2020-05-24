@@ -3,12 +3,12 @@
 }
 .sidebar-container ul {
   padding: 0px;
-  border: 1px solid black;
   border-radius: 6%;
 }
 
-.sidebar-container li {
-  border-bottom: 1px solid black;
+ul .heading {
+  background-color: black;
+  color: white;
 }
 
 .item {
@@ -16,4 +16,8 @@
   width: 150px;
   height: 36px;
   text-align: center;
+}
+
+.list-group-item.active {
+  background-color: #e05d1e !important;
 }
