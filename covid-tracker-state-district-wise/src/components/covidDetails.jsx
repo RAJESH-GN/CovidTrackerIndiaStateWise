@@ -52,14 +52,16 @@ class CovidDetails extends Component {
     ];
     let filteredResult = util.filterBasedOnUserInput(
       covidDetails,
-      searchUserInput
+      searchUserInput,
+      "state"
     );
-
+    const placeholder = "Search a state...";
     return (
       <div className="covid-details-container">
         <Search
           handleChange={this.handleSearchInput}
           searchInputValue={searchUserInput}
+          placeholder={placeholder}
         />
         <DashBoardCard total={total} properties={property} />
         <div className="table-container">
@@ -71,6 +73,7 @@ class CovidDetails extends Component {
                   <td
                     onClick={() => this.handleSelectedState(data)}
                     style={{ display: "block" }}
+                    className="hover-highlight"
                   >
                     {data.state}
                   </td>

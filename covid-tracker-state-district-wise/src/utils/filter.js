@@ -1,11 +1,13 @@
 import _ from "lodash";
 
-const filterBasedOnUserInput = (data, searchUserInput) => {
+const filterBasedOnUserInput = (data, searchUserInput, propertyPath) => {
   return searchUserInput != ""
     ? [
         ...data.filter((data) => {
           return _.startsWith(
-            data.state.toString().toLowerCase(),
+            propertyPath != undefined
+              ? _.get(data, propertyPath).toString().toLowerCase()
+              : data.toString().toLowerCase(),
             searchUserInput.toLowerCase()
           );
         }),

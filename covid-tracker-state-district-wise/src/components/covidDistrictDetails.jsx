@@ -55,15 +55,17 @@ class CovidDistrictDetails extends Component {
       searchUserInput,
     } = this.state;
 
-    /* let filteredResult = util.filterBasedOnUserInput(
+    let filteredDistrictResult = util.filterBasedOnUserInput(
       districtNames,
       searchUserInput
-    ); */
+    );
+    const placeholder = "Search a district...";
     return (
       <div className="covid-details-container">
         <Search
           handleChange={this.handleSearchInput}
           searchInputValue={searchUserInput}
+          placeholder={placeholder}
         />
         <DashBoardCard
           total={this.props.location.state}
@@ -73,15 +75,13 @@ class CovidDistrictDetails extends Component {
           <table className="table ">
             <TableHead properties={tableProperties} />
             <tbody>
-              {districtNames.map((name, index) => (
+              {filteredDistrictResult.map((name, index) => (
                 <tr key={index}>
                   <td>{name}</td>
-                  <React.Fragment>
-                    <td>{districtDetails[name].confirmed}</td>
-                    <td>{districtDetails[name].active}</td>
-                    <td>{districtDetails[name].recovered}</td>
-                    <td>{districtDetails[name].deceased}</td>
-                  </React.Fragment>
+                  <td>{districtDetails[name].confirmed}</td>
+                  <td>{districtDetails[name].active}</td>
+                  <td>{districtDetails[name].recovered}</td>
+                  <td>{districtDetails[name].deceased}</td>
                 </tr>
               ))}
             </tbody>

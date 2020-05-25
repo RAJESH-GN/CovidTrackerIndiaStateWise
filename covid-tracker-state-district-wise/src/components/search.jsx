@@ -13,7 +13,7 @@ class Search extends Component {
           <input
             type="text"
             className="form-control"
-            placeholder="Search a State..."
+            placeholder={this.props.placeholder}
             value={this.props.value}
             onChange={this.props.handleChange}
             aria-label="Sizing example input"

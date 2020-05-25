@@ -12,3 +12,13 @@ td {
 .covid-details-container {
   position: absolute;
 }
+
+.hover-highlight {
+  color: blue;
+}
+
+.hover-highlight:hover {
+  cursor: pointer;
+  color: blue;
+  text-decoration: underline;
+}
