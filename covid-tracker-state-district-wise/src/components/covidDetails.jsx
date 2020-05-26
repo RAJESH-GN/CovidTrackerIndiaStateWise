@@ -5,12 +5,13 @@ import "./covidDetails.css";
 import DashBoardCard from "./dashBoardCard";
 import TableHead from "./tableHead";
 import Search from "./search";
+import TableBody from "../common/tableBody";
 import util from "./../utils/filter";
 
 class CovidDetails extends Component {
   state = {
     statewiseDetails: [],
-    total: {},
+    totalCases: {},
     searchUserInput: "",
     property: [
       { id: 1, name: "confirmed", color: "red" },
@@ -23,13 +24,15 @@ class CovidDetails extends Component {
   async componentDidMount() {
     const { data } = await http.getData(config.GET_COVID_STATE_WISE_URL);
     const statewiseDetails = data.statewise;
-    const total = { ...statewiseDetails.find((data) => data.state == "Total") };
-    this.setState({ statewiseDetails, total });
+    const totalCases = {
+      ...statewiseDetails.find((data) => data.state == "Total"),
+    };
+    this.setState({ statewiseDetails, totalCases });
   }
 
   handleSelectedState = (data) => {
     this.props.history.push({
-      pathname: `/covid/state/${data.state}/details`,
+      pathname: `/covid/india/state/${data.state}/details`,
       state: { ...data },
     });
   };
@@ -39,13 +42,18 @@ class CovidDetails extends Component {
   };
 
   render() {
-    const { statewiseDetails, total, property, searchUserInput } = this.state;
+    const {
+      statewiseDetails,
+      totalCases,
+      property,
+      searchUserInput,
+    } = this.state;
     const tableProperties = [
       { id: 1, name: "State", path: "state" },
       { id: 2, name: "Confirmed/Total", path: "confirmed" },
       { id: 3, name: "Active", path: "active" },
       { id: 4, name: "Recovered", path: "recovered" },
-      { id: 5, name: "Deceased", path: "deceased" },
+      { id: 5, name: "Deceased", path: "deaths" },
     ];
     let covidDetails = [
       ...statewiseDetails.filter((data) => data.state != "Total"),
@@ -63,27 +71,15 @@ class CovidDetails extends Component {
           searchInputValue={searchUserInput}
           placeholder={placeholder}
         />
-        <DashBoardCard total={total} properties={property} />
+        <DashBoardCard total={totalCases} properties={property} />
         <div className="table-container">
           <table className="table ">
             <TableHead properties={tableProperties} />
-            <tbody>
-              {filteredResult.map((data) => (
-                <tr key={data.statecode}>
-                  <td
-                    onClick={() => this.handleSelectedState(data)}
-                    style={{ display: "block" }}
-                    className="hover-highlight"
-                  >
-                    {data.state}
-                  </td>
-                  <td>{data.confirmed}</td>
-                  <td>{data.active}</td>
-                  <td>{data.recovered}</td>
-                  <td>{data.deaths}</td>
-                </tr>
-              ))}
-            </tbody>
+            <TableBody
+              bodyData={filteredResult}
+              properties={tableProperties}
+              onClick={this.handleSelectedState}
+            />
           </table>
         </div>
       </div>

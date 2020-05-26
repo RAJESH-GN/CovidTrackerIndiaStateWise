@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import "./search.css";
+
 class Search extends Component {
   render() {
     return (
-      <div>
+      <div className="search-input-container">
         <div className="input-group input-group-lg search-input">
           <div className="input-group-prepend">
             <span className="input-group-text" id="inputGroup-sizing-lg">

@@ -1,3 +1,7 @@
 .district-details-container {
   position: absolute;
 }
+
+.disabled {
+  display: none;
+}

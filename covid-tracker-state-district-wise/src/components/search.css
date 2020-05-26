@@ -1,3 +1,7 @@
 .search-input {
   margin-bottom: 10px;
 }
+
+.search-input-container {
+  width: 680px;
+}

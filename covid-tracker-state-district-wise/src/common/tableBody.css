@@ -1,0 +1,10 @@
+tr td:first-child {
+  display: block;
+  color: blue;
+}
+
+td:first-child.hover-highlight:hover {
+  cursor: pointer;
+  color: blue;
+  text-decoration: underline;
+}

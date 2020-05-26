@@ -27,6 +27,7 @@ class App extends Component {
       <React.Fragment>
         <NavBar />
         <main className="container">
+          {/* <div className="sidebar-contain"></div> */}
           <SideBar
             tabs={tabs}
             tabHeading="Search By"
@@ -35,13 +36,13 @@ class App extends Component {
           />
           <div className="route-container">
             <Switch>
+              <Route
+                path="/covid/india/state/:name/details"
+                render={(props) => <CovidDistrictDetails {...props} />}
+              />
               <Route path="/covid/india/state" component={CovidDetails} />
               <Route path="/covid/india/district" component={DistrictDetails} />
               <Route path="/covid/india/notfound" component={NotFound} />
-              <Route
-                path="/covid/state/:name/details"
-                render={(props) => <CovidDistrictDetails {...props} />}
-              />
               <Redirect to="/covid/india/state" exact from="/" />
               <Redirect to="/covid/india/notfound" />
             </Switch>
