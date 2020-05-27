@@ -1,5 +1,6 @@
 .sidebar-container {
-  position: absolute;
+  position: relative;
+  display: inline-block;
 }
 .sidebar-container ul {
   padding: 0px;
@@ -19,5 +20,4 @@ ul .heading {
 }
 
 .list-group-item.active {
-  //background-color: #e05d1e !important;
 }

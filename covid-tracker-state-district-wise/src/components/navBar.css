@@ -1,3 +1,7 @@
+.navbar-heading-wrapper {
+  display: inline-block;
+  position: relative;
+}
 .navbar-heading {
   text-align: center;
   color: white;
@@ -13,6 +17,7 @@
 
 .image-container {
   position: absolute;
+  display: inline-block;
 }
 
 .corona-img {

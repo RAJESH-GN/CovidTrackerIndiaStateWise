@@ -4,7 +4,9 @@ const NavBar = () => {
   return (
     <div className="navbar-container">
       <div className="navbar-align-center">
-        <h1 className="navbar-heading">COVID-19 INDIA TRACKER</h1>
+        <div className="navbar-heading-wrapper">
+          <h1 className="navbar-heading">COVID-19 INDIA TRACKER</h1>
+        </div>
         <span className="image-container">
           <img
             className="corona-img"

@@ -27,14 +27,16 @@ class App extends Component {
       <React.Fragment>
         <NavBar />
         <main className="container">
-          {/* <div className="sidebar-contain"></div> */}
-          <SideBar
-            tabs={tabs}
-            tabHeading="Search By"
-            selectedTab={selectedTab}
-            onSelectedTab={this.handleSelectedTab}
-          />
-          <div className="route-container">
+          <div className="sidebar-container">
+            <SideBar
+              tabs={tabs}
+              tabHeading="Search By"
+              selectedTab={selectedTab}
+              onSelectedTab={this.handleSelectedTab}
+            />
+          </div>
+          <div className="route-details-container">
+            <div className="route-container"></div>
             <Switch>
               <Route
                 path="/covid/india/state/:name/details"

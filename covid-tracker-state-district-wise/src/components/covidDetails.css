@@ -4,6 +4,13 @@
   min-width: 100%;
 }
 
+@media (max-width: 600px) {
+  .table-container {
+    width: 540px;
+    min-width: 0%;
+  }
+}
+
 tr,
 td {
   box-shadow: 2px 2px 3px #b3a7a7;

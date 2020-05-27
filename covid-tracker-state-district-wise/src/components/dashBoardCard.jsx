@@ -4,7 +4,7 @@ class DashBoardCard extends Component {
   state = {};
   render() {
     return (
-      <div className={this.props.isEnabled}>
+      <div className={this.props.isEnabled} style={{ width: "690px" }}>
         {this.props.properties.map((property) => (
           <div className="dashboard-card-container" key={property.id}>
             <p

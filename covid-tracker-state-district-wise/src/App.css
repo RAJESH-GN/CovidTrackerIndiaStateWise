@@ -10,3 +10,9 @@
 .App {
   text-align: center;
 }
+
+.route-details-container {
+  display: inline-block;
+  margin-left: 20px;
+  position: absolute;
+}
