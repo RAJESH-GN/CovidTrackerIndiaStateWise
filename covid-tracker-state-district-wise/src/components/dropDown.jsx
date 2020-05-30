@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Select from "react-select";
 class Dropdown extends Component {
   getContainerClassName = (propClasses) => {
     const classes = "drop-down-container ";
