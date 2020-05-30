@@ -72,8 +72,8 @@ class CovidDetails extends Component {
           placeholder={placeholder}
         />
         <DashBoardCard total={totalCases} properties={property} />
-        <div className="table-container">
-          <table className="table ">
+        <div className="table-responsive">
+          <table className="table table-bordered">
             <TableHead properties={tableProperties} />
             <TableBody
               bodyData={filteredResult}

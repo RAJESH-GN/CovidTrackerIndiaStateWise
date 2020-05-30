@@ -2,20 +2,17 @@ import React, { Component } from "react";
 import "./navBar.css";
 const NavBar = () => {
   return (
-    <div className="navbar-container">
-      <div className="navbar-align-center">
-        <div className="navbar-heading-wrapper">
-          <h1 className="navbar-heading">COVID-19 INDIA TRACKER</h1>
-        </div>
-        <span className="image-container">
-          <img
-            className="corona-img"
-            src="https://cdn.pixabay.com/photo/2020/04/10/08/42/coronavirus-5024649_960_720.png"
-            alt=""
-          />
-        </span>
-      </div>
-    </div>
+    <nav className="navbar navbar-expand-md navbar-light bg-light">
+      <span className="navbar-brand mb-0 h1">
+        {" "}
+        Covid India Tracker
+        <img
+          className="corona-img"
+          src="https://cdn.pixabay.com/photo/2020/04/10/08/42/coronavirus-5024649_960_720.png"
+          alt=""
+        />
+      </span>
+    </nav>
   );
 };
 

@@ -2,9 +2,13 @@ import React, { Component } from "react";
 import "./dashBoardCard.css";
 class DashBoardCard extends Component {
   state = {};
+
+  getClassName = () => {
+    return "dashboard-card-container-wrapper " + this.props.isEnabled;
+  };
   render() {
     return (
-      <div className={this.props.isEnabled} style={{ width: "690px" }}>
+      <div className={this.getClassName()}>
         {this.props.properties.map((property) => (
           <div className="dashboard-card-container" key={property.id}>
             <p

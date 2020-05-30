@@ -11,6 +11,7 @@ class DistrictDetails extends Component {
     selectedState: "",
     selectedDistrict: "",
     result: {},
+    defaultValue: "",
     dashboardProperty: [
       { id: 1, name: "confirmed", color: "red" },
       { id: 2, name: "active", color: "blue" },
@@ -29,7 +30,9 @@ class DistrictDetails extends Component {
 
   handleStateSelected = (e) => {
     const selectedState = e.target.value;
-    this.setState({ selectedState, selectedDistrict: "" });
+    this.setState({ selectedState });
+    this.isEnabled();
+    this.enableDistrct();
     this.populateDistrict(selectedState);
   };
 
@@ -41,7 +44,6 @@ class DistrictDetails extends Component {
 
   enableCovidDashboardDetails = (district) => {
     const { selectedState, districtRawDetails } = this.state;
-    debugger;
     const result = districtRawDetails[selectedState]["districtData"][district];
     this.setState({ result });
   };
@@ -54,34 +56,45 @@ class DistrictDetails extends Component {
 
   isEnabled = () => {
     const { selectedDistrict, selectedState } = this.state;
+    debugger;
     if (selectedState != "" && selectedDistrict != "") {
       return;
     }
     return "disabled";
   };
 
+  enableDistrct = () => {
+    const { selectedState } = this.state;
+    if (selectedState == "") {
+      return "disabled";
+    }
+    return "";
+  };
+
   render() {
     const {
-      searchUserInput,
       dashboardProperty,
       stateNames,
       districtNames,
       result,
+      defaultValue,
     } = this.state;
-    const placeholder = "Search a District";
     return (
       <div className="covid-details-container">
         <Dropdown
           className="states-dropdown"
-          onSelect={this.handleStateSelected}
+          elementId="states"
+          onChange={this.handleStateSelected}
           options={stateNames}
           label={"State"}
         />
         <Dropdown
-          className="districts-dropdown"
-          onSelect={this.handleDistrictSelected}
+          className={this.enableDistrct()}
+          elementId="districts"
+          onChange={this.handleDistrictSelected}
           options={districtNames}
           label="District"
+          disabled
         />
         <DashBoardCard
           total={result}

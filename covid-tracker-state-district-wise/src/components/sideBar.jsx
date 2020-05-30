@@ -12,7 +12,7 @@ class SideBar extends Component {
   render() {
     const { tabHeading, tabs, selectedTab, onSelectedTab } = this.props;
     return (
-      <div className=" list-group sidebar-container">
+      <div className=" list-group">
         <ul>
           <li className="list-group-item item heading">{tabHeading}</li>
           {tabs.map((tab) => (

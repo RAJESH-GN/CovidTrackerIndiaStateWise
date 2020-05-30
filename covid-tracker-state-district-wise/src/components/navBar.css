@@ -15,14 +15,6 @@
   text-align: center;
 }
 
-.image-container {
-  position: absolute;
-  display: inline-block;
-}
-
 .corona-img {
   width: 40px;
-  position: absolute;
-  top: 6px;
-  left: 6px;
 }

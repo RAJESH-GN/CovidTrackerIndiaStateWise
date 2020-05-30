@@ -36,7 +36,6 @@ class App extends Component {
             />
           </div>
           <div className="route-details-container">
-            <div className="route-container"></div>
             <Switch>
               <Route
                 path="/covid/india/state/:name/details"

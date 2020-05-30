@@ -1,10 +1,5 @@
 .container {
-  margin: 20px auto;
-}
-
-.route-container {
-  position: relative;
-  left: 18%;
+  margin: 0px auto;
 }
 
 .App {
@@ -12,7 +7,4 @@
 }
 
 .route-details-container {
-  display: inline-block;
-  margin-left: 20px;
-  position: absolute;
 }

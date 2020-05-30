@@ -1,7 +1,7 @@
 .dashboard-card-container {
   background-color: white;
-  height: 100px;
-  width: 150px;
+  min-height: 80px;
+  min-width: 110px;
   position: relative;
   display: inline-block;
   margin: 10px 10px;
@@ -10,11 +10,13 @@
   text-transform: capitalize;
 }
 
-@media (max-width: 600px) {
-  .dashboard-card-container {
-    height: 80px;
-    width: 110px;
-  }
+.dashboard-card-container-wrapper {
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 8px;
+  padding: 9px;
+  text-align: center;
 }
 
 .dashboard-text {
