@@ -4,7 +4,10 @@ class DashBoardCard extends Component {
   state = {};
 
   getClassName = () => {
-    return "dashboard-card-container-wrapper " + this.props.isEnabled;
+    return (
+      "dashboard-card-container-wrapper " +
+      `${!this.props.isEnabled ? "disabled" : ""}`
+    );
   };
   render() {
     return (

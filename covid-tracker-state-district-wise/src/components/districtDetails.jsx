@@ -12,6 +12,7 @@ class DistrictDetails extends Component {
     selectedDistrict: "",
     result: {},
     defaultValue: "",
+    enableDashboard: false,
     dashboardProperty: [
       { id: 1, name: "confirmed", color: "red" },
       { id: 2, name: "active", color: "blue" },
@@ -30,15 +31,14 @@ class DistrictDetails extends Component {
 
   handleStateSelected = (e) => {
     const selectedState = e.target.value;
-    this.setState({ selectedState });
-    this.isEnabled();
+    this.setState({ selectedState, enableDashboard: false });
     this.enableDistrct();
     this.populateDistrict(selectedState);
   };
 
   handleDistrictSelected = (e) => {
     const selectedDistrict = e.target.value;
-    this.setState({ selectedDistrict });
+    this.setState({ selectedDistrict, enableDashboard: true });
     this.enableCovidDashboardDetails(selectedDistrict);
   };
 
@@ -56,7 +56,6 @@ class DistrictDetails extends Component {
 
   isEnabled = () => {
     const { selectedDistrict, selectedState } = this.state;
-    debugger;
     if (selectedState != "" && selectedDistrict != "") {
       return;
     }
@@ -94,12 +93,11 @@ class DistrictDetails extends Component {
           onChange={this.handleDistrictSelected}
           options={districtNames}
           label="District"
-          disabled
         />
         <DashBoardCard
           total={result}
           properties={dashboardProperty}
-          isEnabled={this.isEnabled()}
+          isEnabled={this.state.enableDashboard}
         >
           <h1>Label for Heading</h1>
         </DashBoardCard>
