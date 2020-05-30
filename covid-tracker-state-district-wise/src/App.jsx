@@ -27,26 +27,31 @@ class App extends Component {
       <React.Fragment>
         <NavBar />
         <main className="container">
-          <div className="sidebar-container">
-            <SideBar
-              tabs={tabs}
-              tabHeading="Search By"
-              selectedTab={selectedTab}
-              onSelectedTab={this.handleSelectedTab}
-            />
-          </div>
-          <div className="route-details-container">
-            <Switch>
-              <Route
-                path="/covid/india/state/:name/details"
-                render={(props) => <CovidDistrictDetails {...props} />}
+          <div className="route-wrapper">
+            <div className="sidebar-container">
+              <SideBar
+                tabs={tabs}
+                tabHeading="Search By"
+                selectedTab={selectedTab}
+                onSelectedTab={this.handleSelectedTab}
               />
-              <Route path="/covid/india/state" component={CovidDetails} />
-              <Route path="/covid/india/district" component={DistrictDetails} />
-              <Route path="/covid/india/notfound" component={NotFound} />
-              <Redirect to="/covid/india/state" exact from="/" />
-              <Redirect to="/covid/india/notfound" />
-            </Switch>
+            </div>
+            <div className="route-details-container">
+              <Switch>
+                <Route
+                  path="/covid/india/state/:name/details"
+                  render={(props) => <CovidDistrictDetails {...props} />}
+                />
+                <Route path="/covid/india/state" component={CovidDetails} />
+                <Route
+                  path="/covid/india/district"
+                  component={DistrictDetails}
+                />
+                <Route path="/covid/india/notfound" component={NotFound} />
+                <Redirect to="/covid/india/state" exact from="/" />
+                <Redirect to="/covid/india/notfound" />
+              </Switch>
+            </div>
           </div>
         </main>
       </React.Fragment>

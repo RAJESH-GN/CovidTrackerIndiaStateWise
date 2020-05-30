@@ -6,5 +6,20 @@
   text-align: center;
 }
 
-.route-details-container {
+@media (min-width: 993px) {
+  .route-wrapper {
+    margin-top: 20px;
+  }
+
+  .sidebar-container {
+    float: left;
+  }
+  .sidebar-container,
+  .route-details-container {
+    display: inline-block;
+  }
+
+  .route-details-container {
+    margin-left: 20px;
+  }
 }
